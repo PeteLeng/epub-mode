@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t -*-
 (require 'shr)
+(require 'imenu)
 
 ;; not necessary since call-process searches in exec-path
 (defvar epub-unzip-command "unzip"
@@ -24,7 +25,7 @@
   "Unique identifier for the EPUB publication.")
 
 (defvar-local epub-manifest-table nil
-  "A table from content id to url and media-type.")
+  "A table from content id to url (absolute) and media-type.")
 
 (defvar-local epub-url-table nil
   "A table from content url to id.")
@@ -257,7 +258,7 @@ A wrapper for 'create-image'."
 
 ;; Override shr-url-transformer in <a> tag such that,
 ;; the url passed into 'urlify' is absolute.
-;; Bind keymap to epub-button-map (instead of shr-map) inside 'urlify'.
+;; Bind keymap to epub-shr-map (instead of shr-map) inside 'urlify'.
 ;; 'urlify' is also called in tags including <video> and <audio>,
 ;; which most definitely do not point to resources inside container.
 (defun epub-tag-a (dom)
@@ -265,7 +266,7 @@ A wrapper for 'create-image'."
   (let ((shr-url-transformer #'(lambda (url)
 				 (if (epub-url-remotep url) url
 				   (expand-file-name url))))
-	(shr-map epub-button-map))
+	(shr-map epub-shr-map))
     (shr-tag-a dom)))
 
 ;; Translate ncx to html (for backward compatibility).
@@ -302,12 +303,12 @@ A wrapper for 'create-image'."
        (insert "</li>\n")))
     (tag (error (format "cannot handle tag: %s" tag)))))
 
-(defun epub--ncx-descend (dom)
+(defun epub-walk-ncx-node (dom)
   "Transform a ncx dom tree to an xml dom tree."
   (pcase (node-tag dom)
     ('navMap
      (let ((ch
-	    (mapcar #'epub--ncx-descend (node-children dom))))
+	    (mapcar #'epub-walk-ncx-node (node-children dom))))
        `(ol nil ,@ch)))
     
     ('navPoint
@@ -317,7 +318,7 @@ A wrapper for 'create-image'."
 	    (href (node-attr 'src content))
 	    ;; (href (expand-file-name (node-attr 'src content) epub-root-url))
 	    (ch (exml-findall '(navPoint nil ("*" nil) (navPoint nil)) dom))
-	    (ch (and ch (mapcar #'epub--ncx-descend ch))))
+	    (ch (and ch (mapcar #'epub-walk-ncx-node ch))))
        (unless href
 	 (warn "content href missing: %s" label))
        `(li nil (a ((href . ,href)) ,label) ,@ch)))
@@ -325,16 +326,18 @@ A wrapper for 'create-image'."
 
 ;; keymap
 (defvar-keymap epub-mode-map
+  "SPC" 'epub-scroll-up
+  "S-SPC" 'epub-scroll-down
+  "RET" 'epub-scroll-up
+  "DEL" 'epub-scroll-down
   "n" 'epub-next-chap
   "p" 'epub-prev-chap
+  "j" 'next-line
+  "k" 'previous-line
   "t" 'epub-goto-toc
-  "SPC" 'epub-scroll-up
-  "RET" 'epub-scroll-up
-  "S-SPC" 'epub-scroll-down
-  "DEL" 'epub-scroll-down
   )
 
-(defvar-keymap epub-button-map
+(defvar-keymap epub-shr-map
   :parent shr-map
   "<mouse-2>" 'epub-browse-url
   "RET" 'epub-browse-url)
@@ -368,7 +371,10 @@ return property value from the manifest table."
 	(epub-goto-content-helper (url-filename url) nil (url-target url)))
       ))))
 
-;; The lowest level fucntion for navigating content documents.
+;; wrapper function for epub-goto-content,
+;; which accepts either a valid url or content id.
+;; superlinks are usually accessed directly through url
+;; while next/previous pages are accessed through id.
 (defun epub-goto-content-helper (url-or-id &optional pnt target)
   (pcase (gethash url-or-id epub-manifest-table)
     (`(,url ,tp)
@@ -378,8 +384,9 @@ return property value from the manifest table."
      (epub-goto-content cid url-or-id pnt target))
     (_ (error "neither url or id, should not happen"))))
 
+;; The lowest level fucntion for navigating content documents.
 (defun epub-goto-content (cid url pnt target)
-  "Given content id an url, render content document."
+  "Given content id and url, render content document."
   (let ((tp (manifest-get cid :media-type)))
     (message (format "goto url: %s" url))
     (epub-render-content url tp)
@@ -406,7 +413,7 @@ return property value from the manifest table."
       ((pred (string-match "dtbncx")) ;; A ncx TOC file, requires translation
        (let* ((pt (epub-parse-xml url))
 	      (dom (exml-find '("*" nil (navMap nil)) pt))
-	      (dom (epub--ncx-descend dom)))
+	      (dom (epub-walk-ncx-node dom)))
 	 (epub-render-html dom epub-root-url)))
       (_
        (let ((dom (epub-parse-xml url)))
@@ -558,6 +565,10 @@ Progress data is a list of progress entries, each is a list of (publication-id, 
   ;; Misc
   (setq buffer-undo-list t)
 
+  ;; Interops
+  (setq imenu-create-index-function #'epub-imenu-create-index-function)
+  (setq imenu-default-goto-function #'epub-imenu-goto-function)
+
   (if-let ((prog (epub-retrive-progress epub-publication-id))
 	   (cid (nth 1 prog))
 	   (pnt (nth 2 prog)))
@@ -568,5 +579,101 @@ Progress data is a list of progress entries, each is a list of (publication-id, 
 	  (epub-cleanup t)))
     (let ((front (cdar epub-spine-alist)))
       (epub-goto-content-helper front))))
+
+;; imenu interop
+;; (defvar-local imenu-create-index-function
+;;     'imenu-default-create-index-function ...)
+
+;; the imenu utility is incorporated by customizing
+;; 'imenu-create-index-function and 'imenu-default-goto-function
+
+(defun epub-imenu-goto-function (descp url &rest args)
+  (epub-goto-content-helper url))
+
+;; callstack of imenu
+;; - imenu
+;; - imenu-choose-buffer-index
+;; - imenu--make-index-alist
+;; - imenu-create-index-function (within save-excursion)
+;; index alist elements look like
+;; (INDEX-NAME POSITION FUNCTION ARGUMENTS...)
+
+(defun epub-imenu-create-index-function ()
+  (seq-let (url tp) (gethash epub-toc-id epub-manifest-table)
+    ;; (message (format "imenu src file: %s" url))
+    (let ((pt (epub-parse-xml url))
+	  (base-dir (file-name-directory url)))
+      (pcase tp
+	((pred (string-match "dtbncx")) ;; A ncx TOC file, requires translation
+	 (epub-imenu-create-index-from-ncx pt base-dir))
+	(_
+	 (epub-imenu-create-index-from-nav pt base-dir)))
+      )))
+
+(defun epub-imenu-create-index-from-ncx (pt base-dir)
+  (let ((nl
+	 (exml-findall '("*" nil (navPoint nil)) pt)))
+    (mapcar (lambda (nd)
+	      (let ((text
+		     (exml-find '("*" nil (text nil))) nd)
+		    (content
+		     (exml-find '("*" nil (content nil)) nd)))
+		(cons (dom-text text)
+		      (expand-file-name (dom-attr content 'src)
+					base-dir))))
+	    nl)))
+
+(defun epub-imenu-create-index-from-nav (pt base-dir)
+  (let* ((nd (exml-find '("*" nil
+			  (nav (("=" type "toc"))
+			       ("*" nil (ol nil))))
+			pt))
+	 (menu (mapcan (apply-partially #'epub-imenu-walk-li "")
+		       (node-children nd))))
+    (message (format "%s" menu))
+    (mapcar (lambda (ele)
+	      (pcase ele
+		(`(,name . ,url)
+		 `(,name . ,(expand-file-name url base-dir)))))
+	    menu)
+    ))
+
+(defun epub-imenu-walk-li (idnt nd)
+  "Walk an li tag and return an imenu index alist.
+base-dir is the directory of the nav file."
+  (pcase nd
+    (`(li ,_ ,atag)
+     (let* ((url (epub-url-sanitize (dom-attr atag 'href)))
+	    (name (epub-imenu-walk-a atag)))
+       (and (epub-str-non-null name)
+	    `((,(concat idnt name) . ,url)))))
+    (`(li ,_ ,atag ,ol . ,_)
+     (let* ((url (epub-url-sanitize (dom-attr atag 'href)))
+	    (name (epub-imenu-walk-a atag)))
+       (nconc (and (epub-str-non-null name)
+		   `((,(concat idnt name) . ,url)))
+	      (mapcan (apply-partially #'epub-imenu-walk-li
+				       (concat (and (epub-str-non-null name) "-")
+					       idnt))
+		      (node-children ol)))))
+    ))
+
+(defun epub-imenu-walk-a (nd)
+  "Walk an a tag and return the embedded text."
+  (or (epub-str-non-null (dom-text nd))
+      (mapconcat #'dom-text (node-children nd) " ")))
+
+(defun epub-str-non-null (s)
+  (and (not (null s))
+       (not (string= "" s))
+       s))
+
+(defun epub-url-sanitize (url)
+  "Return sanitized version of url. (Remove suffixes after colon, hash, etc.)"
+  (let ((url-obj (url-generic-parse-url url)))
+    (or (and (url-type url-obj)
+	     url)
+	(or (url-filename url-obj)))
+    ))
 
 ;; epub.el ends here.
