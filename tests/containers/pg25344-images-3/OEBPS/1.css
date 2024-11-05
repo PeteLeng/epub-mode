@@ -1,0 +1,164 @@
+p {
+    margin-top: 0.75em;
+    text-align: justify;
+    margin-bottom: 0.75em;
+    text-indent: 1em
+    }
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    clear: both
+    }
+table {
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 180%
+    }
+td.leftalign {
+    padding-right: 4em;
+    text-align: left;
+    padding-left: 1em
+    }
+td.rightalign {
+    text-align: right
+    }
+body {
+    margin-left: 10%;
+    margin-right: 10%
+    }
+p.publisher {
+    margin-top: 4em;
+    text-align: center;
+    font-size: smaller;
+    margin-bottom: 3em;
+    text-indent: 0;
+    letter-spacing: 0.15ex
+    }
+p.copyright {
+    margin-top: 6em;
+    text-align: center;
+    font-size: 70%;
+    margin-bottom: 3em;
+    text-indent: 0;
+    line-height: 150%
+    }
+div.note {
+    margin: 4em 10% 0 10%;
+    padding: 1em;
+    border: 1px dashed black;
+    color: inherit;
+    background-color: #F0F8FF;
+    font-size: smaller
+    }
+div.initial {
+    float: left;
+    clear: both;
+    padding-top: 0;
+    padding-right: 0.3em
+    }
+span.firstwords {
+    text-transform: uppercase
+    }
+img {
+    border-style: none
+    }
+div.backright {
+    background: top right no-repeat
+    }
+div.backleft {
+    background: top left no-repeat
+    }
+div.sandbag-left {
+    float: left;
+    clear: left;
+    padding-right: 10px
+    }
+div.sandbag {
+    float: right;
+    clear: right;
+    padding-left: 10px
+    }
+ul {
+    list-style: none;
+    line-height: 150%
+    }
+.pagenum {
+    font-size: x-small;
+    text-align: right;
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: 0;
+    text-indent: 0
+    }
+a:link {
+    text-decoration: none;
+    color: #104E8B;
+    background-color: inherit
+    }
+a:visited {
+    text-decoration: none;
+    color: #8B0000;
+    background-color: inherit
+    }
+a:hover {
+    text-decoration: underline
+    }
+a:active {
+    text-decoration: underline
+    }
+.bbox {
+    border: solid 1px;
+    margin-left: 20%;
+    margin-right: 20%
+    }
+.center {
+    text-align: center;
+    text-indent: 0
+    }
+.smcap {
+    font-variant: small-caps
+    }
+.figcenter {
+    margin: auto;
+    text-align: center;
+    text-indent: 0
+    }
+.figleft {
+    float: left;
+    clear: left;
+    margin-left: 0;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-right: 1em;
+    padding: 0;
+    text-align: center
+    }
+.figright {
+    float: right;
+    clear: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-right: 0;
+    padding: 0;
+    text-align: center
+    }
+div.footnote p {
+    text-indent: 0
+    }
+.footnotes {
+    border: dotted 1px;
+    padding-bottom: 1em;
+    margin-top: 2em
+    }
+.footnote {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: smaller
+    }
+.footnote .label {
+    text-align: right
+    }
+.fnanchor {
+    vertical-align: baseline;
+    font-size: 80%
+    }

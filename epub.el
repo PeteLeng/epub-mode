@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t -*-
 (require 'shr)
 (require 'imenu)
+(require 'exml-query)
 
 ;; not necessary since call-process searches in exec-path
 (defvar epub-unzip-command "unzip"
@@ -40,7 +41,13 @@
   "File id of the document currently reading.")
 
 (defvar-local epub-scroll-pct 0.75
-  "File id of the document currently reading.")
+  "Percentage of screen height scrolled up and down.")
+
+(defvar-local epub-scroll-beyond t
+  "Scroll to previous or next page at the beginning or end of the current page.")
+
+(defvar epub-resume-progress t
+  "Resume from the last position when reopening epub files.")
 
 ;; Unzip epub file
 (defun epub-unzip (fpath exdir)
@@ -459,7 +466,8 @@ Url is necessary to resolve dom elements with relative urls to absolute urls."
 
 (defun epub-scroll-up (arg)
   (interactive "P")
-  (if (>= (window-end) (point-max))
+  (if (and (>= (window-end) (point-max))
+	   epub-scroll-beyond)
       (epub-next-chap)
     (let ((wid-lines
 	   (count-screen-lines (window-start) (window-end))))
@@ -468,7 +476,8 @@ Url is necessary to resolve dom elements with relative urls to absolute urls."
 
 (defun epub-scroll-down (arg)
   (interactive "P")
-  (if (<= (window-start) (point-min))
+  (if (and (<= (window-start) (point-min))
+	   epub-scroll-beyond)
       (progn
 	(epub-prev-chap)
 	(goto-char (point-max)))
@@ -569,7 +578,8 @@ Progress data is a list of progress entries, each is a list of (publication-id, 
   (setq imenu-create-index-function #'epub-imenu-create-index-function)
   (setq imenu-default-goto-function #'epub-imenu-goto-function)
 
-  (if-let ((prog (epub-retrive-progress epub-publication-id))
+  (if-let ((prog (and epub-resume-progress
+		      (epub-retrive-progress epub-publication-id)))
 	   (cid (nth 1 prog))
 	   (pnt (nth 2 prog)))
       (progn
@@ -615,7 +625,7 @@ Progress data is a list of progress entries, each is a list of (publication-id, 
 	 (exml-findall '("*" nil (navPoint nil)) pt)))
     (mapcar (lambda (nd)
 	      (let ((text
-		     (exml-find '("*" nil (text nil))) nd)
+		     (exml-find '("*" nil (text nil)) nd))
 		    (content
 		     (exml-find '("*" nil (content nil)) nd)))
 		(cons (dom-text text)
@@ -669,11 +679,13 @@ base-dir is the directory of the nav file."
        s))
 
 (defun epub-url-sanitize (url)
-  "Return sanitized version of url. (Remove suffixes after colon, hash, etc.)"
+  "Return sanitized version of url URL.
+Suffixes like colons, hashes, etc., are removed)"
   (let ((url-obj (url-generic-parse-url url)))
     (or (and (url-type url-obj)
 	     url)
 	(or (url-filename url-obj)))
     ))
 
-;; epub.el ends here.
+(provide 'epub)
+;;; epub.el ends here.

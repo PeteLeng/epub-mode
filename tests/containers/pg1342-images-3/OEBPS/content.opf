@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<package xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="id" xml:lang="en">
+  <metadata>
+    <dc:rights>Public domain in the USA.</dc:rights>
+    <dc:identifier id="id">http://www.gutenberg.org/1342</dc:identifier>
+    <dc:creator id="author_0">Jane Austen</dc:creator>
+    <meta property="file-as" refines="#author_0">Austen, Jane</meta>
+    <meta property="role" refines="#author_0" scheme="marc:relators">aut</meta>
+    <dc:title>Pride and Prejudice</dc:title>
+    <dc:language>en</dc:language>
+    <dc:subject>England -- Fiction</dc:subject>
+    <dc:subject>Young women -- Fiction</dc:subject>
+    <dc:subject>Love stories</dc:subject>
+    <dc:subject>Sisters -- Fiction</dc:subject>
+    <dc:subject>Domestic fiction</dc:subject>
+    <dc:subject>Courtship -- Fiction</dc:subject>
+    <dc:subject>Social classes -- Fiction</dc:subject>
+    <dc:date>1998-06-01</dc:date>
+    <meta property="dcterms:modified">2024-10-01T14:07:20Z</meta>
+    <dc:source>https://www.gutenberg.org/files/1342/1342-h/1342-h.htm</dc:source>
+    <meta property="schema:accessMode">textual</meta>
+    <meta property="schema:accessibilityFeature">readingOrder</meta>
+    <meta property="schema:accessibilityHazard">none</meta>
+    <meta property="schema:accessModeSufficient">textual,visual</meta>
+    <meta property="schema:accessibilitySummary">This publication may not have complete alternative text descriptions.</meta>
+    <meta name="cover" content="id-2700600724960216573"/>
+  </metadata>
+  <manifest>
+    <!--Image: 1500 x 2114 size=229591 -->
+    <item href="5550132427476565403_cover.jpg" id="id-2700600724960216573" media-type="image/jpeg" properties="cover-image"/>
+    <!--Image: 200 x 201 size=14534 -->
+    <item href="5550132427476565403_colophon.png" id="img_images_colophon.png" media-type="image/png"/>
+    <!--Image: 764 x 1200 size=110698 -->
+    <item href="5550132427476565403_i_003.jpg" id="img_images_i_003.jpg" media-type="image/jpeg"/>
+    <!--Image: 578 x 1200 size=104114 -->
+    <item href="5550132427476565403_front.png" id="img_images_front.png" media-type="image/png"/>
+    <!--Image: 300 x 529 size=21184 -->
+    <item href="5550132427476565403_peacock-1894.png" id="img_images_peacock-1894.png" media-type="image/png"/>
+    <!--Image: 450 x 364 size=14952 -->
+    <item href="5550132427476565403_i_008.png" id="img_images_i_008.png" media-type="image/png"/>
+    <!--Image: 1200 x 622 size=239573 -->
+    <item href="5550132427476565403_i_010.jpg" id="img_images_i_010.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 507 size=132268 q=90-->
+    <item href="5550132427476565403_i_026.jpg" id="img_images_i_026.jpg" media-type="image/jpeg"/>
+    <!--Image: 816 x 1200 size=249534 q=85-->
+    <item href="5550132427476565403_i_030.jpg" id="img_images_i_030.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 957 size=242979 q=85-->
+    <item href="5550132427476565403_i_031.jpg" id="img_images_i_031.jpg" media-type="image/jpeg"/>
+    <!--Image: 968 x 1200 size=229389 q=85-->
+    <item href="5550132427476565403_i_034.jpg" id="img_images_i_034.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 873 size=248200 q=80-->
+    <item href="5550132427476565403_i_035_a.jpg" id="img_images_i_035_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 110 size=2615 -->
+    <item href="5550132427476565403_i_035_b.png" id="img_images_i_035_b.png" media-type="image/png"/>
+    <!--Image: 841 x 1200 size=261693 -->
+    <item href="5550132427476565403_i_038.jpg" id="img_images_i_038.jpg" media-type="image/jpeg"/>
+    <!--Image: 881 x 1200 size=228865 q=85-->
+    <item href="5550132427476565403_i_039_a.jpg" id="img_images_i_039_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 101 size=3172 -->
+    <item href="5550132427476565403_i_039_b.png" id="img_images_i_039_b.png" media-type="image/png"/>
+    <!--Image: 817 x 1200 size=260885 -->
+    <item href="5550132427476565403_i_041.jpg" id="img_images_i_041.jpg" media-type="image/jpeg"/>
+    <!--Image: 994 x 1200 size=260376 -->
+    <item href="5550132427476565403_i_044.jpg" id="img_images_i_044.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 615 size=259551 -->
+    <item href="5550132427476565403_i_047_a.jpg" id="img_images_i_047_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 85 size=2801 -->
+    <item href="5550132427476565403_i_047_b.png" id="img_images_i_047_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 592 size=247217 q=90-->
+    <item href="5550132427476565403_i_051_a.jpg" id="img_images_i_051_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 103 size=3603 -->
+    <item href="5550132427476565403_i_051_b.png" id="img_images_i_051_b.png" media-type="image/png"/>
+    <!--Image: 773 x 1200 size=259434 -->
+    <item href="5550132427476565403_i_053.jpg" id="img_images_i_053.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 1119 size=161073 q=90-->
+    <item href="5550132427476565403_i_055.jpg" id="img_images_i_055.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 408 size=225319 -->
+    <item href="5550132427476565403_i_056_a.jpg" id="img_images_i_056_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 117 size=3416 -->
+    <item href="5550132427476565403_i_056_b.png" id="img_images_i_056_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1193 size=257083 -->
+    <item href="5550132427476565403_i_060.jpg" id="img_images_i_060.jpg" media-type="image/jpeg"/>
+    <!--Image: 1132 x 1200 size=260913 -->
+    <item href="5550132427476565403_i_065_a.jpg" id="img_images_i_065_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 92 size=2590 -->
+    <item href="5550132427476565403_i_065_b.png" id="img_images_i_065_b.png" media-type="image/png"/>
+    <!--Image: 945 x 1200 size=255248 -->
+    <item href="5550132427476565403_i_069.jpg" id="img_images_i_069.jpg" media-type="image/jpeg"/>
+    <!--Image: 560 x 1200 size=231999 q=90-->
+    <item href="5550132427476565403_i_073.jpg" id="img_images_i_073.jpg" media-type="image/jpeg"/>
+    <!--Image: 1142 x 1200 size=255604 -->
+    <item href="5550132427476565403_i_074_a.jpg" id="img_images_i_074_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 107 size=2936 -->
+    <item href="5550132427476565403_i_074_b.png" id="img_images_i_074_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1184 size=258373 q=85-->
+    <item href="5550132427476565403_i_082_a.jpg" id="img_images_i_082_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 115 size=2954 -->
+    <item href="5550132427476565403_i_082_b.png" id="img_images_i_082_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 702 size=186658 q=90-->
+    <item href="5550132427476565403_i_089_a.jpg" id="img_images_i_089_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 109 size=3323 -->
+    <item href="5550132427476565403_i_089_b.png" id="img_images_i_089_b.png" media-type="image/png"/>
+    <!--Image: 1025 x 1200 size=257590 -->
+    <item href="5550132427476565403_i_096.jpg" id="img_images_i_096.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 1056 size=255749 -->
+    <item href="5550132427476565403_i_098_a.jpg" id="img_images_i_098_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 83 size=2713 -->
+    <item href="5550132427476565403_i_098_b.png" id="img_images_i_098_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 589 size=159494 q=90-->
+    <item href="5550132427476565403_i_104_a.jpg" id="img_images_i_104_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 243 size=4670 -->
+    <item href="5550132427476565403_i_104_b.png" id="img_images_i_104_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 487 size=167726 -->
+    <item href="5550132427476565403_i_107_a.jpg" id="img_images_i_107_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 70 x 151 size=3480 -->
+    <item href="5550132427476565403_i_107_b.png" id="img_images_i_107_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 520 size=131570 q=90-->
+    <item href="5550132427476565403_i_113_a.jpg" id="img_images_i_113_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 46 size=1268 -->
+    <item href="5550132427476565403_i_113_b.png" id="img_images_i_113_b.png" media-type="image/png"/>
+    <!--Image: 787 x 1200 size=241912 q=85-->
+    <item href="5550132427476565403_i_116.jpg" id="img_images_i_116.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 463 size=221705 -->
+    <item href="5550132427476565403_i_118_a.jpg" id="img_images_i_118_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 91 size=2768 -->
+    <item href="5550132427476565403_i_118_b.png" id="img_images_i_118_b.png" media-type="image/png"/>
+    <!--Image: 1058 x 1200 size=257815 -->
+    <item href="5550132427476565403_i_124_a.jpg" id="img_images_i_124_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 113 size=2944 -->
+    <item href="5550132427476565403_i_124_b.png" id="img_images_i_124_b.png" media-type="image/png"/>
+    <!--Image: 853 x 1200 size=261316 -->
+    <item href="5550132427476565403_i_126.jpg" id="img_images_i_126.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 1181 size=257181 -->
+    <item href="5550132427476565403_i_137_a.jpg" id="img_images_i_137_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 121 size=3194 -->
+    <item href="5550132427476565403_i_137_b.png" id="img_images_i_137_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1053 size=238870 q=85-->
+    <item href="5550132427476565403_i_142_a.jpg" id="img_images_i_142_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 120 size=3574 -->
+    <item href="5550132427476565403_i_142_b.png" id="img_images_i_142_b.png" media-type="image/png"/>
+    <!--Image: 969 x 1200 size=258400 -->
+    <item href="5550132427476565403_i_147.jpg" id="img_images_i_147.jpg" media-type="image/jpeg"/>
+    <!--Image: 1009 x 1200 size=257685 -->
+    <item href="5550132427476565403_i_161_a.jpg" id="img_images_i_161_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 107 size=2972 -->
+    <item href="5550132427476565403_i_161_b.png" id="img_images_i_161_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 804 size=242296 q=90-->
+    <item href="5550132427476565403_i_168_a.jpg" id="img_images_i_168_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 91 size=2562 -->
+    <item href="5550132427476565403_i_168_b.png" id="img_images_i_168_b.png" media-type="image/png"/>
+    <!--Image: 967 x 1200 size=228567 q=85-->
+    <item href="5550132427476565403_i_172.jpg" id="img_images_i_172.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 1165 size=260549 -->
+    <item href="5550132427476565403_i_175_a.jpg" id="img_images_i_175_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 86 size=2598 -->
+    <item href="5550132427476565403_i_175_b.png" id="img_images_i_175_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 955 size=166323 q=90-->
+    <item href="5550132427476565403_i_177.jpg" id="img_images_i_177.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 735 size=184833 q=90-->
+    <item href="5550132427476565403_i_183_a.jpg" id="img_images_i_183_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 113 size=3262 -->
+    <item href="5550132427476565403_i_183_b.png" id="img_images_i_183_b.png" media-type="image/png"/>
+    <!--Image: 810 x 1200 size=256173 -->
+    <item href="5550132427476565403_i_185.jpg" id="img_images_i_185.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 1086 size=258484 -->
+    <item href="5550132427476565403_i_190_a.jpg" id="img_images_i_190_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 122 size=3502 -->
+    <item href="5550132427476565403_i_190_b.png" id="img_images_i_190_b.png" media-type="image/png"/>
+    <!--Image: 1173 x 1200 size=258643 -->
+    <item href="5550132427476565403_i_195.jpg" id="img_images_i_195.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 626 size=174962 q=90-->
+    <item href="5550132427476565403_i_197_a.jpg" id="img_images_i_197_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 91 size=2556 -->
+    <item href="5550132427476565403_i_197_b.png" id="img_images_i_197_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 569 size=150134 q=90-->
+    <item href="5550132427476565403_i_204_a.jpg" id="img_images_i_204_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 93 size=2883 -->
+    <item href="5550132427476565403_i_204_b.png" id="img_images_i_204_b.png" media-type="image/png"/>
+    <!--Image: 1007 x 1200 size=256928 -->
+    <item href="5550132427476565403_i_206.jpg" id="img_images_i_206.jpg" media-type="image/jpeg"/>
+    <!--Image: 1176 x 1200 size=259333 -->
+    <item href="5550132427476565403_i_210_a.jpg" id="img_images_i_210_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 101 size=2918 -->
+    <item href="5550132427476565403_i_210_b.png" id="img_images_i_210_b.png" media-type="image/png"/>
+    <!--Image: 926 x 1200 size=259810 -->
+    <item href="5550132427476565403_i_218_a.jpg" id="img_images_i_218_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 86 size=2680 -->
+    <item href="5550132427476565403_i_218_b.png" id="img_images_i_218_b.png" media-type="image/png"/>
+    <!--Image: 1035 x 1200 size=260650 -->
+    <item href="5550132427476565403_i_223_a.jpg" id="img_images_i_223_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 102 size=3239 -->
+    <item href="5550132427476565403_i_223_b.png" id="img_images_i_223_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1122 size=257018 -->
+    <item href="5550132427476565403_i_227.jpg" id="img_images_i_227.jpg" media-type="image/jpeg"/>
+    <!--Image: 1164 x 1200 size=257688 -->
+    <item href="5550132427476565403_i_229_a.jpg" id="img_images_i_229_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 92 size=2936 -->
+    <item href="5550132427476565403_i_229_b.png" id="img_images_i_229_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 946 size=261651 -->
+    <item href="5550132427476565403_i_238_a.jpg" id="img_images_i_238_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 96 size=3254 -->
+    <item href="5550132427476565403_i_238_b.png" id="img_images_i_238_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1169 size=256746 -->
+    <item href="5550132427476565403_i_240.jpg" id="img_images_i_240.jpg" media-type="image/jpeg"/>
+    <!--Image: 1030 x 1200 size=258687 -->
+    <item href="5550132427476565403_i_242.jpg" id="img_images_i_242.jpg" media-type="image/jpeg"/>
+    <!--Image: 1190 x 1200 size=233524 q=70-->
+    <item href="5550132427476565403_i_244_a.jpg" id="img_images_i_244_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 99 size=3319 -->
+    <item href="5550132427476565403_i_244_b.png" id="img_images_i_244_b.png" media-type="image/png"/>
+    <!--Image: 1131 x 1200 size=259336 -->
+    <item href="5550132427476565403_i_250_a.jpg" id="img_images_i_250_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 118 size=3271 -->
+    <item href="5550132427476565403_i_250_b.png" id="img_images_i_250_b.png" media-type="image/png"/>
+    <!--Image: 788 x 1200 size=258737 -->
+    <item href="5550132427476565403_i_254.jpg" id="img_images_i_254.jpg" media-type="image/jpeg"/>
+    <!--Image: 1063 x 1200 size=259443 -->
+    <item href="5550132427476565403_i_257_a.jpg" id="img_images_i_257_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 104 size=2969 -->
+    <item href="5550132427476565403_i_257_b.png" id="img_images_i_257_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1180 size=256362 -->
+    <item href="5550132427476565403_i_264_a.jpg" id="img_images_i_264_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 93 size=2754 -->
+    <item href="5550132427476565403_i_264_b.png" id="img_images_i_264_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 981 size=236383 q=70-->
+    <item href="5550132427476565403_i_272_a.jpg" id="img_images_i_272_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 101 size=2801 -->
+    <item href="5550132427476565403_i_272_b.png" id="img_images_i_272_b.png" media-type="image/png"/>
+    <!--Image: 913 x 1200 size=174970 q=90-->
+    <item href="5550132427476565403_i_282_a.jpg" id="img_images_i_282_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 449 size=5210 -->
+    <item href="5550132427476565403_i_282_b.png" id="img_images_i_282_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1002 size=240997 q=90-->
+    <item href="5550132427476565403_i_285.jpg" id="img_images_i_285.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 979 size=255802 -->
+    <item href="5550132427476565403_i_290_a.jpg" id="img_images_i_290_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 121 size=3169 -->
+    <item href="5550132427476565403_i_290_b.png" id="img_images_i_290_b.png" media-type="image/png"/>
+    <!--Image: 861 x 1200 size=257737 q=85-->
+    <item href="5550132427476565403_i_292.jpg" id="img_images_i_292.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 990 size=257972 -->
+    <item href="5550132427476565403_i_296_a.jpg" id="img_images_i_296_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 100 size=2837 -->
+    <item href="5550132427476565403_i_296_b.png" id="img_images_i_296_b.png" media-type="image/png"/>
+    <!--Image: 982 x 1200 size=259417 -->
+    <item href="5550132427476565403_i_299.jpg" id="img_images_i_299.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 1115 size=261110 -->
+    <item href="5550132427476565403_i_301_a.jpg" id="img_images_i_301_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 128 size=3075 -->
+    <item href="5550132427476565403_i_301_b.png" id="img_images_i_301_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 864 size=251898 q=90-->
+    <item href="5550132427476565403_i_307_a.jpg" id="img_images_i_307_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 133 size=3415 -->
+    <item href="5550132427476565403_i_307_b.png" id="img_images_i_307_b.png" media-type="image/png"/>
+    <!--Image: 765 x 1200 size=256835 -->
+    <item href="5550132427476565403_i_312.jpg" id="img_images_i_312.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 1097 size=258956 -->
+    <item href="5550132427476565403_i_314_a.jpg" id="img_images_i_314_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 106 size=2851 -->
+    <item href="5550132427476565403_i_314_b.png" id="img_images_i_314_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1030 size=251147 q=80-->
+    <item href="5550132427476565403_i_319.jpg" id="img_images_i_319.jpg" media-type="image/jpeg"/>
+    <!--Image: 1063 x 1200 size=260805 -->
+    <item href="5550132427476565403_i_323_a.jpg" id="img_images_i_323_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 100 size=2444 -->
+    <item href="5550132427476565403_i_323_b.png" id="img_images_i_323_b.png" media-type="image/png"/>
+    <!--Image: 1020 x 1200 size=258145 -->
+    <item href="5550132427476565403_i_330_a.jpg" id="img_images_i_330_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 99 size=2685 -->
+    <item href="5550132427476565403_i_330_b.png" id="img_images_i_330_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 867 size=256539 -->
+    <item href="5550132427476565403_i_347_a.jpg" id="img_images_i_347_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 120 size=2805 -->
+    <item href="5550132427476565403_i_347_b.png" id="img_images_i_347_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1174 size=257875 -->
+    <item href="5550132427476565403_i_350.jpg" id="img_images_i_350.jpg" media-type="image/jpeg"/>
+    <!--Image: 940 x 1200 size=252792 -->
+    <item href="5550132427476565403_i_356_a.jpg" id="img_images_i_356_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 103 size=2927 -->
+    <item href="5550132427476565403_i_356_b.png" id="img_images_i_356_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 465 size=261401 -->
+    <item href="5550132427476565403_i_363_a.jpg" id="img_images_i_363_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 116 size=2722 -->
+    <item href="5550132427476565403_i_363_b.png" id="img_images_i_363_b.png" media-type="image/png"/>
+    <!--Image: 965 x 1200 size=259299 -->
+    <item href="5550132427476565403_i_368.jpg" id="img_images_i_368.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 1088 size=258923 -->
+    <item href="5550132427476565403_i_374_a.jpg" id="img_images_i_374_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 234 size=3285 -->
+    <item href="5550132427476565403_i_374_b.png" id="img_images_i_374_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1086 size=261728 -->
+    <item href="5550132427476565403_i_388_a.jpg" id="img_images_i_388_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 109 size=2857 -->
+    <item href="5550132427476565403_i_388_b.png" id="img_images_i_388_b.png" media-type="image/png"/>
+    <!--Image: 1154 x 1200 size=255923 -->
+    <item href="5550132427476565403_i_392.jpg" id="img_images_i_392.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 864 size=256439 -->
+    <item href="5550132427476565403_i_397_a.jpg" id="img_images_i_397_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 92 size=2750 -->
+    <item href="5550132427476565403_i_397_b.png" id="img_images_i_397_b.png" media-type="image/png"/>
+    <!--Image: 1046 x 1200 size=258406 -->
+    <item href="5550132427476565403_i_399.jpg" id="img_images_i_399.jpg" media-type="image/jpeg"/>
+    <!--Image: 1170 x 1200 size=256274 -->
+    <item href="5550132427476565403_i_406_a.jpg" id="img_images_i_406_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 103 size=2606 -->
+    <item href="5550132427476565403_i_406_b.png" id="img_images_i_406_b.png" media-type="image/png"/>
+    <!--Image: 935 x 1200 size=257311 -->
+    <item href="5550132427476565403_i_414_a.jpg" id="img_images_i_414_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 110 size=3311 -->
+    <item href="5550132427476565403_i_414_b.png" id="img_images_i_414_b.png" media-type="image/png"/>
+    <!--Image: 965 x 1200 size=260074 -->
+    <item href="5550132427476565403_i_422_a.jpg" id="img_images_i_422_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 135 size=4395 -->
+    <item href="5550132427476565403_i_422_b.png" id="img_images_i_422_b.png" media-type="image/png"/>
+    <!--Image: 1075 x 1200 size=259450 -->
+    <item href="5550132427476565403_i_433_a.jpg" id="img_images_i_433_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 102 size=2664 -->
+    <item href="5550132427476565403_i_433_b.png" id="img_images_i_433_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 1029 size=253091 q=85-->
+    <item href="5550132427476565403_i_444_a.jpg" id="img_images_i_444_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 106 size=2859 -->
+    <item href="5550132427476565403_i_444_b.png" id="img_images_i_444_b.png" media-type="image/png"/>
+    <!--Image: 1038 x 1200 size=254347 q=90-->
+    <item href="5550132427476565403_i_449.jpg" id="img_images_i_449.jpg" media-type="image/jpeg"/>
+    <!--Image: 691 x 1200 size=243130 q=90-->
+    <item href="5550132427476565403_i_451_a.jpg" id="img_images_i_451_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 115 size=2892 -->
+    <item href="5550132427476565403_i_451_b.png" id="img_images_i_451_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 998 size=257940 -->
+    <item href="5550132427476565403_i_460_a.jpg" id="img_images_i_460_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 100 size=2507 -->
+    <item href="5550132427476565403_i_460_b.png" id="img_images_i_460_b.png" media-type="image/png"/>
+    <!--Image: 724 x 1200 size=246892 q=85-->
+    <item href="5550132427476565403_i_463.jpg" id="img_images_i_463.jpg" media-type="image/jpeg"/>
+    <!--Image: 1200 x 841 size=260983 -->
+    <item href="5550132427476565403_i_471_a.jpg" id="img_images_i_471_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 113 size=2932 -->
+    <item href="5550132427476565403_i_471_b.png" id="img_images_i_471_b.png" media-type="image/png"/>
+    <!--Image: 1118 x 1200 size=255142 -->
+    <item href="5550132427476565403_i_477_a.jpg" id="img_images_i_477_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 91 size=2482 -->
+    <item href="5550132427476565403_i_477_b.png" id="img_images_i_477_b.png" media-type="image/png"/>
+    <!--Image: 908 x 1200 size=261038 -->
+    <item href="5550132427476565403_i_486_a.jpg" id="img_images_i_486_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 88 size=2348 -->
+    <item href="5550132427476565403_i_486_b.png" id="img_images_i_486_b.png" media-type="image/png"/>
+    <!--Image: 984 x 1200 size=256251 -->
+    <item href="5550132427476565403_i_495_a.jpg" id="img_images_i_495_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 122 size=3435 -->
+    <item href="5550132427476565403_i_495_b.png" id="img_images_i_495_b.png" media-type="image/png"/>
+    <!--Image: 1200 x 700 size=260009 -->
+    <item href="5550132427476565403_i_501_a.jpg" id="img_images_i_501_a.jpg" media-type="image/jpeg"/>
+    <!--Image: 100 x 93 size=2569 -->
+    <item href="5550132427476565403_i_501_b.png" id="img_images_i_501_b.png" media-type="image/png"/>
+    <!--Image: 752 x 1200 size=209475 q=90-->
+    <item href="5550132427476565403_i_505.jpg" id="img_images_i_505.jpg" media-type="image/jpeg"/>
+    <item href="pgepub.css" id="item1" media-type="text/css"/>
+    <item href="0.css" id="item2" media-type="text/css"/>
+    <item href="1.css" id="item3" media-type="text/css"/>
+    <item href="2.css" id="item4" media-type="text/css"/>
+    <!--Chunk: size=177851 Split on div-->
+    <item href="839214611115157077_1342-h-0.htm.xhtml" id="pg-header" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=164362 Split on div-->
+    <item href="839214611115157077_1342-h-1.htm.xhtml" id="item5" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=183610 Split on div-->
+    <item href="839214611115157077_1342-h-2.htm.xhtml" id="item6" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=186513 Split on div-->
+    <item href="839214611115157077_1342-h-3.htm.xhtml" id="item7" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=213244 Split on div-->
+    <item href="839214611115157077_1342-h-4.htm.xhtml" id="item8" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=12366 Split on section-->
+    <item href="839214611115157077_1342-h-5.htm.xhtml" id="item9" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=19686-->
+    <item href="839214611115157077_1342-h-6.htm.xhtml" id="pg-footer" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=382-->
+    <item href="5550132427476565403_cover.jpg.id-2063666609793270847.wrap-0.html.xhtml" id="item10" media-type="application/xhtml+xml"/>
+    <item href="toc.xhtml" id="ncx" media-type="application/xhtml+xml" properties="nav"/>
+    <item href="toc.ncx" id="ncx2" media-type="application/x-dtbncx+xml"/>
+    <item href="wrap0000.xhtml" id="coverpage-wrapper" media-type="application/xhtml+xml" properties="svg"/>
+  </manifest>
+  <spine toc="ncx2">
+    <itemref idref="coverpage-wrapper"/>
+    <itemref idref="pg-header"/>
+    <itemref idref="item5"/>
+    <itemref idref="item6"/>
+    <itemref idref="item7"/>
+    <itemref idref="item8"/>
+    <itemref idref="item9"/>
+    <itemref idref="pg-footer"/>
+    <itemref idref="item10"/>
+  </spine>
+</package>

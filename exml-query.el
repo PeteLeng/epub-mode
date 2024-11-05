@@ -1,66 +1,29 @@
 ;; -*- lexical-binding: t -*-
+;;; exml-query.el --- An xml query library in Elisp
 
-(defun node-tag (node)
-  (dom-tag node))
+;; Copyright (C) 2024 Pete Leng
 
-(defun node-children (node)
-  (and (consp node) (cddr node)))
+;; This file is NOT part of GNU Emacs.
 
-(defun node-attrs (node)
-  (and (consp node) (cadr node)))
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 
-(defun node-attr (attr node)
-  (and (consp node)
-       (cdr (assoc attr (nth 1 node)))))
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 
-(defun visit-node (func node)
-  (funcall #'func node)
-  (mapc (apply-partially #'visit-node func) (node-children node)))
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;; (defun match-node (node patt)
-;;   (or (null patt)
-;;       (and node
-;; 	   (equal (node-tag node) (node-tag patt))
-;; 	   (let ((nodes (node-children node))
-;; 		 (patts (node-children patt)))
-;; 	     (and (>= (length nodes) (length patts))
-;; 		  (seq-reduce #'(lambda (acc v) (and acc v))
-;; 			      (cl-mapcar #'match-node nodes patts)
-;; 			      t))))))
-
-(defun match-tag (n1 n2)
-  "Match the tag of two exml nodes."
-  (equal (node-tag n1) (node-tag n2)))
-
-(defun match-attr (patt node)
-  "Match an attribute against a exml node,
-Each pattern looks like (op name val)."
-  (or (null patt)
-      (let* ((name (cadr patt))
-	     (attrs (dom-attributes node))
-	     (val (cdr (assoc name attrs))))
-	(and val
-	     (pcase patt
-	       (`("=" ,_ ,pval) (string-equal pval val))
-	       (`("*=" ,_ ,pval) (string-match pval val))
-	       (`("^=" ,_ ,pval) (string-match (concat "^" pval) val))
-	       (`("$=" ,_ ,pval) (string-match (concat pval "$") val))
-	       (`(,op . ,_) (error "operator not implemented"))
-	       )
-	     t))))
-
-(defun match-attrs (patts node)
-  "Match a list of attributes against a node."
-  (or (null patts)
-      (seq-every-p (lambda (patt)
-		     (match-attr patt node))
-		   patts)))
-
+;;; Commentary:
 ;; The main purpose of this package is to retrieve
-;; a list of nodes, the destination nodes, nested within
-;; the node where the search starts, the source node,
-;; where the path from the src to the dst matches the
-;; pattern.
+;; a list of destination nodes which are nested within
+;; the source node, where the search begins,
+;; such that the path from the source to each destination node
+;; matches the given pattern.
 ;; The intermediate representation for the patterns
 ;; are node-like structures.
 
@@ -78,15 +41,80 @@ Each pattern looks like (op name val)."
 ;; in a DFS fashion, from top to bottom,
 ;; and left to right.
 
+(require 'dom)
+
+;;; Code:
+(defun node-tag (node)
+  "Get tag of node NODE.
+Wrapper function for dom-tag."
+  (dom-tag node))
+
+(defun node-children (node)
+  "Get children of node NODE."
+  (and (consp node) (cddr node)))
+
+(defun node-attrs (node)
+  "Get attribute list of node NODE."
+  (and (consp node) (cadr node)))
+
+(defun node-attr (attr node)
+  "Get attribute ATTR of node NODE."
+  (and (consp node)
+       (cdr (assoc attr (nth 1 node)))))
+
+(defun visit-node (func node)
+  "Recursively walk the node NODE and apply function FUNC to each node."
+  (funcall func node)
+  (mapc (apply-partially #'visit-node func) (node-children node)))
+
+;; (defun match-node (node patt)
+;;   (or (null patt)
+;;       (and node
+;; 	   (equal (node-tag node) (node-tag patt))
+;; 	   (let ((nodes (node-children node))
+;; 		 (patts (node-children patt)))
+;; 	     (and (>= (length nodes) (length patts))
+;; 		  (seq-reduce #'(lambda (acc v) (and acc v))
+;; 			      (cl-mapcar #'match-node nodes patts)
+;; 			      t))))))
+
+(defun match-tag (n1 n2)
+  "Match the tag of exml node N1 and N2."
+  (equal (node-tag n1) (node-tag n2)))
+
+(defun match-attr (patt node)
+  "Match an attribute PATT against a exml node NODE.
+An attribute looks like (op name val)."
+  (or (null patt)
+      (let* ((name (cadr patt))
+	     (attrs (dom-attributes node))
+	     (val (cdr (assoc name attrs))))
+	(and val
+	     (pcase patt
+	       (`("=" ,_ ,pval) (string-equal pval val))
+	       (`("*=" ,_ ,pval) (string-match pval val))
+	       (`("^=" ,_ ,pval) (string-match (concat "^" pval) val))
+	       (`("$=" ,_ ,pval) (string-match (concat pval "$") val))
+	       (`(,_ . ,_) (error "Operator not implemented"))
+	       )
+	     t))))
+
+(defun match-attrs (patts node)
+  "Match a list of attributes PATTS against a node NODE."
+  (or (null patts)
+      (seq-every-p (lambda (patt)
+		     (match-attr patt node))
+		   patts)))
+
 (defun match-patt (patt nd)
-  "Match node nd against a pattern patt,
-return the list of matched node or nodes, in case of wildcard pattern.
-patt is also a node using intermediate representation."
+  "Match node ND with a pattern PATT.
+Return the list of matched node or nodes (in case of wildcard pattern).
+PATT is a node-like object in intermediate representation."
   (and (not (null patt)) ;; empty pattern does not make sense.
        (consp nd) ;; nd has to be a list, i.e., not a leaf node.
        (pcase patt
 	 (`() ;; should not happen, check regardless
-	  (error "empty pattern"))
+	  (error "Empty pattern"))
 	 (`("*" . ,_) (match-wc patt nd))
 	 (`(,tag ,attrs)
 	  (and (equal tag (node-tag nd))
@@ -96,12 +124,12 @@ patt is also a node using intermediate representation."
 	  (and (equal tag (node-tag nd))
 	       (match-attrs attrs nd)
 	       (match-patts rest (node-children nd))))
-	 (_ (error "malformed pattern: %s" patt))))
+	 (_ (error "Malformed pattern: %s" patt))))
   )
 
 (defun match-wc (patt nd)
-  "Match node nd with a wildcard pattern patt,
-return a list of node or nodes matched."
+  "Match node ND wigh a wildcard pattern PATT.
+Return a list of node or nodes matched."
   ;; wildcard pattern starts with "*"
   (pcase patt
     (`("*" ,_)
@@ -121,13 +149,13 @@ return a list of node or nodes matched."
   )
 
 (defun match-patts (patts nodes)
-  "Match a list of nodes against a list of patterns"
-  ;; (message (format "match patts p: %s with n: %s" patts nodes))
+  "Match a list of patterns PATTS against a list of nodes NODES.
+Return a list of matching nodes."
   (and (not (null patts)) ;; empty patterns do not make sense
        nodes
        (pcase patts
 	 (`() ;; not happening, check anyway
-	  (error "empty pattern list"))
+	  (error "Empty pattern list"))
 	 (`(("*" . ,_) . ,_) (match-patts-wc patts nodes))
 	 ;; (`(("~" . ,_) . ,rest)) ;; supported by "*"
 	 (`(,patt) (match-patt patt (car nodes)))
@@ -137,7 +165,9 @@ return a list of node or nodes matched."
 
 
 (defun match-patts-wc (patts nodes)
-  ;; (message (format "match wilds p: %s with n: %s" patts nodes))
+  "Match a pattern list PATTS against a list of nodes NODES.
+The first pattern in the list PATTS is a wildcard pattern.
+Return a list of matching nodes."
   (and nodes
        (pcase patts
 	 (`(("*" ,_)) ;; branch not necessary
@@ -162,14 +192,14 @@ return a list of node or nodes matched."
   (match-patt patt node))
 
 ;; Tests
-;; Given the node and the following patterns,
+;; Given the following node and following patterns,
 
 ;; a
 ;; | \
 ;; |\ \
 ;; | \ \
 ;; b  c d
-;; | \ 
+;; | \
 ;; |\ \
 ;; a c d
 ;;     |
@@ -241,3 +271,4 @@ return a list of node or nodes matched."
 ;; (exml-test)
 
 (provide 'exml-query)
+;;; exml-query.el ends here
